@@ -6,9 +6,9 @@ Creates a menu with a single button and up to 10 lines of text right before the 
 (Also found in the GUI if you haven't changed anything and launch)
 
 1. Download the latest release from [here](https://github.com/TehNut/LaunchGui/releases).
-2. Open up the .jar and navigate to assets/launchgui/lang/en_US.lang
-3. Open it up in your favorite text editor. Edit everything after the "=" on each line. Leave the line blank if you don't plan to use them, or want a line break.     
-4. Distribute to your players in your pack.
+2. Do an initial launch to generate your config.
+3. Open the config up in your favorite text editor. Change all the lines you want. Leave the line blank if you don't plan to use them, or want a line break.     
+4. Distribute to players of your pack.
 
 I *do not* require any credit for this. It is fully open and useable by anybody.
 
