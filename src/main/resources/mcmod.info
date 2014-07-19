@@ -1,0 +1,16 @@
+[
+{
+  "modid": "launchgui",
+  "name": "LaunchGUI",
+  "description": "Creates a GUI at the start to be customized how you wish.",
+  "version": "1.0.0",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["TehNut"],
+  "credits": "Kris for making me feel obligated. Credit to tterrag for some code.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
