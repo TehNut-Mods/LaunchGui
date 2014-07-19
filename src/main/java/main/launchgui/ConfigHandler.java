@@ -36,7 +36,7 @@ public class ConfigHandler {
 		displayGuiOnLaunch = config.get(main, "displayGuiOnLaunch", true, "Whether or not to display the GUI on launch. Should not be touched.").getBoolean(displayGuiOnLaunch);
 
 		guiTitle = config.get(lines, "guiTitle", "TITLE", "Title of your GUI. Appears at the top.").getString();
-		line1 = config.get(lines, "line1", "").getString();
+		line1 = config.get(lines, "line1", "These are your information lines in the GUI").getString();
 		line2 = config.get(lines, "line2", "").getString();
 		line3 = config.get(lines, "line3", "").getString();
 		line4 = config.get(lines, "line4", "").getString();
