@@ -5,7 +5,7 @@ Creates a menu with a single button and up to 10 lines of text right before the 
 ##How to use:
 (Also found in the GUI if you haven't changed anything and launch)
 
-1. Download the latest release from here.
+1. Download the latest release from [here](https://github.com/TehNut/LaunchGui/releases).
 2. Open up the .jar and navigate to assets/launchgui/lang/en_US.lang
 3. Open it up in your favorite text editor. Edit everything after the "=" on each line. Leave the line blank if you don't plan to use them, or want a line break.     
 4. Distribute to your players in your pack.
