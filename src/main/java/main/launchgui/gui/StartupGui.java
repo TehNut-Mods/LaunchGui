@@ -14,24 +14,23 @@ public class StartupGui extends GuiScreen {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 144, this.height / 2 + 96, 288, 20, TextHelper.localize("info.launchgui.button.title")));
+		this.buttonList.add(new GuiButton(0, this.width / 2 - 144, this.height / 2 + 96, 288, 20, ConfigHandler.buttonText));
 	}
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
 		drawDefaultBackground();
 
-		this.drawCenteredString(this.fontRendererObj, TextHelper.YELLOW + TextHelper.localize("info.launchgui.title"), this.width / 2, this.height / 2 - 100, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.one"), this.width / 2, this.height / 2 - 85, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.two"), this.width / 2, this.height / 2 - 70, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.three"), this.width / 2, this.height / 2 - 55, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.four"), this.width / 2, this.height / 2 - 40, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.five"), this.width / 2, this.height / 2 - 25, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.six"), this.width / 2, this.height / 2 - 10, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.seven"), this.width / 2, this.height / 2 + 5, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.eight"), this.width / 2, this.height / 2 + 20, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.nine"), this.width / 2, this.height / 2 + 35, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, TextHelper.localize("info.launchgui.text.main.ten"), this.width / 2, this.height / 2 + 50, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, TextHelper.YELLOW + ConfigHandler.guiTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line1, this.width / 2, this.height / 2 - 85, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line2, this.width / 2, this.height / 2 - 70, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line3, this.width / 2, this.height / 2 - 55, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line4, this.width / 2, this.height / 2 - 40, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line5, this.width / 2, this.height / 2 - 25, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line6, this.width / 2, this.height / 2 - 10, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line7, this.width / 2, this.height / 2 + 5, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line8, this.width / 2, this.height / 2 + 20, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line9, this.width / 2, this.height / 2 + 35, 0xFFFFFF);
 		super.drawScreen(par1, par2, par3);
 	}
 
@@ -57,7 +56,7 @@ public class StartupGui extends GuiScreen {
 	}
 
 	private void dontShowAgain() {
-		ConfigHandler.manuallyChangeConfigValue("launchgui.cfg", "B:displayGuiOnLaunch", "true", "false");
 		LaunchGui.logger.info("Disabling GUI...");
+		ConfigHandler.manuallyChangeConfigValue("launchgui.cfg", "B:displayGuiOnLaunch", "true", "false");
 	}
 }
