@@ -16,7 +16,7 @@ public class GuiEventHandler {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void openMainMenu(GuiOpenEvent event) {
-		if (shouldLoadGUI && ConfigHandler.displayGuiOnLaunch && Loader.isModLoaded("eirairc")) {
+		if (shouldLoadGUI && ConfigHandler.displayGuiOnLaunch && Loader.isModLoaded(ConfigHandler.modToFind)) {
 			event.gui = new StartupGui();
 			shouldLoadGUI = false;
 		}
