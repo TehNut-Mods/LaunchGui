@@ -21,16 +21,16 @@ public class StartupGui extends GuiScreen {
 	public void drawScreen(int par1, int par2, float par3) {
 		drawDefaultBackground();
 
-		this.drawCenteredString(this.fontRendererObj, TextHelper.YELLOW + ConfigHandler.guiTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line1, this.width / 2, this.height / 2 - 85, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line2, this.width / 2, this.height / 2 - 70, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line3, this.width / 2, this.height / 2 - 55, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line4, this.width / 2, this.height / 2 - 40, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line5, this.width / 2, this.height / 2 - 25, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line6, this.width / 2, this.height / 2 - 10, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line7, this.width / 2, this.height / 2 + 5, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line8, this.width / 2, this.height / 2 + 20, 0xFFFFFF);
-		this.drawCenteredString(this.fontRendererObj, ConfigHandler.line9, this.width / 2, this.height / 2 + 35, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, TextHelper.YELLOW + ConfigHandler.guiTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line1, this.width / 2, this.height / 2 - 85, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line2, this.width / 2, this.height / 2 - 70, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line3, this.width / 2, this.height / 2 - 55, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line4, this.width / 2, this.height / 2 - 40, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line5, this.width / 2, this.height / 2 - 25, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line6, this.width / 2, this.height / 2 - 10, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line7, this.width / 2, this.height / 2 + 5, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line8, this.width / 2, this.height / 2 + 20, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, ConfigHandler.line9, this.width / 2, this.height / 2 + 35, 0xFFFFFF);
 		super.drawScreen(par1, par2, par3);
 	}
 

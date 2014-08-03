@@ -1,5 +1,6 @@
 package main.launchgui;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -7,10 +8,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import main.launchgui.gui.GuiEventHandler;
 import main.launchgui.proxies.CommonProxy;
+import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import java.util.logging.Logger;
 
 @Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION)
 public class LaunchGui {
@@ -18,7 +19,7 @@ public class LaunchGui {
 	@SidedProxy(clientSide = "main.launchgui.proxies.ClientProxy", serverSide = "main.launchgui.proxies.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static Logger logger = LogManager.getLogger(ModInformation.NAME);
+	public static final Logger logger = Logger.getLogger(ModInformation.NAME);
 
 	@Mod.Instance
 	public static LaunchGui instance;
@@ -26,8 +27,8 @@ public class LaunchGui {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		config = new Configuration(event.getSuggestedConfigurationFile());
-		ConfigHandler.init(config);
+		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
 
 		MinecraftForge.EVENT_BUS.register(GuiEventHandler.instance);
 	}

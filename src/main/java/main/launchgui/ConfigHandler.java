@@ -1,6 +1,6 @@
 package main.launchgui;
 
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.Configuration;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,7 +30,8 @@ public class ConfigHandler {
 
 	public static File cfg;
 
-	public static void init(Configuration config) {
+	public static void init(File file) {
+		Configuration config = new Configuration(file);
 		config.load();
 
 		config.addCustomCategoryComment(lines, "These are the options for what your GUI says. Change them as you please, but try to keep them short. It won't split lines for you. Leave blank if unused.");
