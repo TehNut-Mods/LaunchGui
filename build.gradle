@@ -36,7 +36,7 @@ group= config.package_group // http://maven.apache.org/guides/mini/guide-naming-
 archivesBaseName = config.mod_name
 
 minecraft {
-    version = "1.7.10-10.13.1.1217"
+    version = "1.6.4-9.11.1.965"
     assetDir = "run/assets"
     runDir = "run/"
 }
