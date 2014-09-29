@@ -5,7 +5,7 @@ Creates a menu with a single button and up to 10 lines of text right before the 
 ##How to use:
 (Also found in the GUI if you haven't changed anything and launch)
 
-1. Download the latest release from [here](https://github.com/TehNut/LaunchGui/releases).
+1. Download the latest release from [here](http://tehnut.info/jenkins/job/LaunchGUI/).
 2. Do an initial launch to generate your config.
 3. Open the config up in your favorite text editor. Change all the lines you want. Leave the line blank if you don't plan to use them, or want a line break.     
 4. Distribute to players of your pack.
