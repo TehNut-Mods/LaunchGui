@@ -1,4 +1,4 @@
-#A Way to Notify Your Players
+#LaunchGui [![Build Status](http://tehnut.info/jenkins/job/LaunchGUI/badge/icon)](http://tehnut.info/jenkins/job/LaunchGUI/)
 
 Creates a menu with a single button and up to 10 lines of text right before the main menu. It will disable itself once the button is pressed.
 
