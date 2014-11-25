@@ -1,10 +1,9 @@
-package main.launchgui.gui;
+package main.launchgui;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import main.launchgui.ConfigHandler;
 import net.minecraftforge.client.event.GuiOpenEvent;
 
 public class GuiEventHandler {

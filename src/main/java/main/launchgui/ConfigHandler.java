@@ -9,7 +9,6 @@ public class ConfigHandler {
 
 	//sections
 	public static String internal = "Internal";
-	public static String main = "Main";
 	public static String lines = "Lines";
 
 	//options
@@ -36,7 +35,7 @@ public class ConfigHandler {
 		config.addCustomCategoryComment(lines, "These are the options for what your GUI says. Change them as you please, but try to keep them short. It won't split lines for you. Leave blank if unused.");
 
 		displayGuiOnLaunch = config.get(internal, "displayGuiOnLaunch", true, "Whether or not to display the GUI on launch. Should not be touched.").getBoolean(displayGuiOnLaunch);
-		modToFind = config.get(main, "modToFind", "LaunchGUI", "Requires this mod to load the GUI. To always load no matter what, use a mod that is always installed.").getString().toLowerCase();
+		modToFind = config.get(internal, "modToFind", "launchgui", "Requires this mod to load the GUI. To always load no matter what, use a mod that is always installed.").getString().toLowerCase();
 
 		guiTitle = config.get(lines, "guiTitle", "TITLE", "Title of your GUI. Appears at the top.").getString();
 		line1 = config.get(lines, "line1", "These are your information lines in the GUI").getString();
@@ -53,10 +52,6 @@ public class ConfigHandler {
 		if(config.hasChanged()) {
 			config.save();
 		}
-	}
-
-	public static boolean manuallyChangeConfigValue(String prefix, String from, String to) {
-		return manuallyChangeConfigValue(null, prefix, from, to);
 	}
 
 	public static boolean manuallyChangeConfigValue(String filePathFromConfigFolder, String prefix, String from, String to)	{

@@ -1,11 +1,10 @@
-package main.launchgui.util;
+package main.launchgui;
 
 import net.minecraft.util.StatCollector;
 
 public class TextHelper {
 
-	//Call these to color your Strings. Remember to call the format before color.
-	/** Color Coding **/
+	// Color Codes
 	public static final String BLACK = (char) 167 + "0";
 	public static final String BLUE = (char) 167 + "1";
 	public static final String GREEN = (char) 167 + "2";
@@ -23,8 +22,7 @@ public class TextHelper {
 	public static final String YELLOW = (char) 167 + "e";
 	public static final String WHITE = (char) 167 + "f";
 
-	//Call these to format your Strings. Remember to call the format before color.
-	/** Text formatting **/
+	// Formatting
 	public static final String OBFUSCATED = (char) 167 + "k";
 	public static final String BOLD = (char) 167 + "l";
 	public static final String STRIKETHROUGH = (char) 167 + "m";
@@ -33,8 +31,7 @@ public class TextHelper {
 	//This resets color and formatting
 	public static final String END = (char) 167 + "r";
 
-	//Call this to localize your text with a lang file.
-	/** Enable Localizationizing **/
+	// Localization
 	public static String localize(String key) {
 		return StatCollector.translateToLocal(key);
 	}
