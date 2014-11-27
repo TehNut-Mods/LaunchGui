@@ -9,7 +9,8 @@ public class ConfigHandler {
 
 	//sections
 	public static String internal = "Internal";
-	public static String lines = "Lines";
+	public static String info = "Information";
+	public static String buttons = "Buttons";
 
 	//options
 	public static boolean displayGuiOnLaunch;
@@ -25,29 +26,39 @@ public class ConfigHandler {
 	public static String line7;
 	public static String line8;
 	public static String line9;
-	public static String buttonText;
+
+	public static String continueButtonText;
+	public static boolean addLinkButton;
+	public static String linkButtonText;
+	public static String linkButtonLink;
 
 	public static File cfg;
 
 	public static void init(Configuration config) {
 		config.load();
 
-		config.addCustomCategoryComment(lines, "These are the options for what your GUI says. Change them as you please, but try to keep them short. It won't split lines for you. Leave blank if unused.");
+		config.addCustomCategoryComment(buttons, "Everything to do with the buttons.");
+		config.addCustomCategoryComment(info, "These are the options for what your GUI says. Change them as you please, but try to keep them short. It won't split lines for you. Leave blank if unused.");
+		config.addCustomCategoryComment(internal, "Internally used options.");
 
 		displayGuiOnLaunch = config.get(internal, "displayGuiOnLaunch", true, "Whether or not to display the GUI on launch. Should not be touched.").getBoolean(displayGuiOnLaunch);
 		modToFind = config.get(internal, "modToFind", "launchgui", "Requires this mod to load the GUI. To always load no matter what, use a mod that is always installed.").getString().toLowerCase();
 
-		guiTitle = config.get(lines, "guiTitle", "TITLE", "Title of your GUI. Appears at the top.").getString();
-		line1 = config.get(lines, "line1", "These are your information lines in the GUI").getString();
-		line2 = config.get(lines, "line2", "").getString();
-		line3 = config.get(lines, "line3", "").getString();
-		line4 = config.get(lines, "line4", "").getString();
-		line5 = config.get(lines, "line5", "").getString();
-		line6 = config.get(lines, "line6", "").getString();
-		line7 = config.get(lines, "line7", "").getString();
-		line8 = config.get(lines, "line8", "").getString();
-		line9 = config.get(lines, "line9", "").getString();
-		buttonText = config.get(lines, "buttonText", "Continue to Game", "Text to display on the button").getString();
+		guiTitle = config.get(info, "guiTitle", "TITLE", "Title of your GUI. Appears at the top.").getString();
+		line1 = config.get(info, "line1", "", "These are your information info in the GUI").getString();
+		line2 = config.get(info, "line2", "").getString();
+		line3 = config.get(info, "line3", "").getString();
+		line4 = config.get(info, "line4", "").getString();
+		line5 = config.get(info, "line5", "").getString();
+		line6 = config.get(info, "line6", "").getString();
+		line7 = config.get(info, "line7", "").getString();
+		line8 = config.get(info, "line8", "").getString();
+		line9 = config.get(info, "line9", "").getString();
+
+		continueButtonText = config.get(buttons, "continueButtonText", "Continue to Game", "Text to display on the button").getString();
+		addLinkButton = config.get(buttons, "addLinkButton", true, "Add a second button that has a link attached to it. Clicking the button will open the link in the user's default browser.").getBoolean(displayGuiOnLaunch);
+		linkButtonText = config.get(buttons, "linkButtonText", "Latest Release", "Text to display on the button.").getString();
+		linkButtonLink = config.get(buttons, "linkButtonLink", "http://tehnut.info/jenkins/job/LaunchGUI-1.7.10/", "Link to open when button is clicked.").getString();
 
 		if(config.hasChanged()) {
 			config.save();

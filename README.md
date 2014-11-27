@@ -1,4 +1,4 @@
-#LaunchGui [![Build Status](http://tehnut.info/jenkins/job/LaunchGUI/badge/icon)](http://tehnut.info/jenkins/job/LaunchGUI/)
+#LaunchGui [![Build Status](http://tehnut.info/jenkins/job/LaunchGUI-1.7.10/badge/icon)](http://tehnut.info/jenkins/job/LaunchGUI-1.7.10/)
 
 Creates a menu with a single button and up to 10 lines of text right before the main menu. It will disable itself once the button is pressed.
 

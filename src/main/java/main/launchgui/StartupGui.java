@@ -3,6 +3,7 @@ package main.launchgui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
+import java.net.URI;
 import java.util.List;
 
 public class StartupGui extends GuiScreen {
@@ -10,7 +11,12 @@ public class StartupGui extends GuiScreen {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 144, this.height / 2 + 96, 288, 20, ConfigHandler.buttonText));
+		if (ConfigHandler.addLinkButton) {
+			this.buttonList.add(new GuiButton(0, this.width / 2 - 154, this.height / 2 + 96, 144, 20, ConfigHandler.continueButtonText));
+			this.buttonList.add(new GuiButton(1, this.width / 2 + 10, this.height / 2 + 96, 144, 20, ConfigHandler.linkButtonText));
+		} else {
+			this.buttonList.add(new GuiButton(0, this.width / 2 - 144, this.height / 2 + 96, 288, 20, ConfigHandler.continueButtonText));
+		}
 	}
 
 	@Override
@@ -33,11 +39,29 @@ public class StartupGui extends GuiScreen {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void actionPerformed(GuiButton button) {
-		dontShowAgain();
-		for (GuiButton b : (List<GuiButton>) buttonList) {
-			b.enabled = false;
+		switch (button.id) {
+			case 0: {
+				dontShowAgain();
+				for (GuiButton b : (List<GuiButton>) buttonList) {
+					b.enabled = false;
+				}
+				this.mc.displayGuiScreen(null);
+				break;
+			}
+			case 1: {
+				try {
+					Utils.browse(new URI(ConfigHandler.linkButtonLink));
+				} catch (Exception exception) {
+					LaunchGui.logger.error("Failed to load the page at " + ConfigHandler.linkButtonLink + "!");
+					exception.printStackTrace();
+				}
+				break;
+			}
+			default: {
+				this.mc.displayGuiScreen(null);
+				break;
+			}
 		}
-		this.mc.displayGuiScreen(null);
 	}
 
 	@Override
