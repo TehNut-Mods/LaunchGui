@@ -70,7 +70,9 @@ public class StartupGui extends GuiScreen {
 	}
 
 	private void dontShowAgain() {
-		LaunchGui.logger.info("Disabling GUI...");
-		ConfigHandler.manuallyChangeConfigValue("launchgui.cfg", "B:displayGuiOnLaunch", "true", "false");
+		if (!ConfigHandler.disableGuiAfterFirstLaunch) {
+			LaunchGui.logger.info("Disabling GUI...");
+			ConfigHandler.manuallyChangeConfigValue("launchgui.cfg", "B:displayGuiOnLaunch", "true", "false");
+		}
 	}
 }

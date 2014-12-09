@@ -27,6 +27,7 @@ public class ConfigHandler {
 	public static String line8;
 	public static String line9;
 
+	public static boolean disableGuiAfterFirstLaunch;
 	public static String continueButtonText;
 	public static boolean addLinkButton;
 	public static String linkButtonText;
@@ -55,6 +56,7 @@ public class ConfigHandler {
 		line8 = config.get(info, "line8", "").getString();
 		line9 = config.get(info, "line9", "").getString();
 
+		disableGuiAfterFirstLaunch = config.get(buttons, "disableGuiAfterFirstLaunch", true, "Whether or not to disable the GUI from showing again after the player presses continue.").getBoolean(disableGuiAfterFirstLaunch);
 		continueButtonText = config.get(buttons, "continueButtonText", "Continue to Game", "Text to display on the button").getString();
 		addLinkButton = config.get(buttons, "addLinkButton", true, "Add a second button that has a link attached to it. Clicking the button will open the link in the user's default browser.").getBoolean(displayGuiOnLaunch);
 		linkButtonText = config.get(buttons, "linkButtonText", "Latest Release", "Text to display on the button.").getString();
