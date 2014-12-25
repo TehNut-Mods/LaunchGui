@@ -33,6 +33,9 @@ public class StartupGui extends GuiScreen {
 		drawCenteredString(this.fontRendererObj, ConfigHandler.line7, this.width / 2, this.height / 2 + 5, 0xFFFFFF);
 		drawCenteredString(this.fontRendererObj, ConfigHandler.line8, this.width / 2, this.height / 2 + 20, 0xFFFFFF);
 		drawCenteredString(this.fontRendererObj, ConfigHandler.line9, this.width / 2, this.height / 2 + 35, 0xFFFFFF);
+		if (ConfigHandler.enableUpdateChecker && Utils.isUpdateAvailable()) {
+			drawCenteredString(this.fontRendererObj, TextHelper.BRIGHT_GREEN + TextHelper.localize("info.launchgui.update"), this.width - 70, this.height / 2 - 115, 0xFFFFFF);
+		}
 		super.drawScreen(par1, par2, par3);
 	}
 
@@ -70,7 +73,7 @@ public class StartupGui extends GuiScreen {
 	}
 
 	private void dontShowAgain() {
-		if (!ConfigHandler.disableGuiAfterFirstLaunch) {
+		if (ConfigHandler.disableGuiAfterFirstLaunch) {
 			LaunchGui.logger.info("Disabling GUI...");
 			ConfigHandler.manuallyChangeConfigValue("launchgui.cfg", "B:displayGuiOnLaunch", "true", "false");
 		}

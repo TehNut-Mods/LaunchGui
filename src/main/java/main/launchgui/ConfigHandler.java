@@ -11,10 +11,12 @@ public class ConfigHandler {
 	public static String internal = "Internal";
 	public static String info = "Information";
 	public static String buttons = "Buttons";
+	public static String update = "Update";
 
 	//options
 	public static boolean displayGuiOnLaunch;
 	public static String modToFind;
+	public static boolean disableGuiAfterFirstLaunch;
 
 	public static String guiTitle;
 	public static String line1;
@@ -27,23 +29,28 @@ public class ConfigHandler {
 	public static String line8;
 	public static String line9;
 
-	public static boolean disableGuiAfterFirstLaunch;
 	public static String continueButtonText;
 	public static boolean addLinkButton;
 	public static String linkButtonText;
 	public static String linkButtonLink;
+
+	public static boolean enableUpdateChecker;
+	public static String currentPackVersion;
+	public static String updateCheckerURL;
 
 	public static File cfg;
 
 	public static void init(Configuration config) {
 		config.load();
 
-		config.addCustomCategoryComment(buttons, "Everything to do with the buttons.");
 		config.addCustomCategoryComment(info, "These are the options for what your GUI says. Change them as you please, but try to keep them short. It won't split lines for you. Leave blank if unused.");
 		config.addCustomCategoryComment(internal, "Internally used options.");
+		config.addCustomCategoryComment(buttons, "Everything to do with the buttons.");
+		config.addCustomCategoryComment(update, "Information on pack updates.");
 
 		displayGuiOnLaunch = config.get(internal, "displayGuiOnLaunch", true, "Whether or not to display the GUI on launch. Should not be touched.").getBoolean(displayGuiOnLaunch);
 		modToFind = config.get(internal, "modToFind", "launchgui", "Requires this mod to load the GUI. To always load no matter what, use a mod that is always installed.").getString().toLowerCase();
+		disableGuiAfterFirstLaunch = config.get(internal, "disableGuiAfterFirstLaunch", true, "Whether or not to disable the GUI from showing again after the player presses continue.").getBoolean(disableGuiAfterFirstLaunch);
 
 		guiTitle = config.get(info, "guiTitle", "TITLE", "Title of your GUI. Appears at the top.").getString();
 		line1 = config.get(info, "line1", "", "These are your information info in the GUI").getString();
@@ -56,11 +63,14 @@ public class ConfigHandler {
 		line8 = config.get(info, "line8", "").getString();
 		line9 = config.get(info, "line9", "").getString();
 
-		disableGuiAfterFirstLaunch = config.get(buttons, "disableGuiAfterFirstLaunch", true, "Whether or not to disable the GUI from showing again after the player presses continue.").getBoolean(disableGuiAfterFirstLaunch);
 		continueButtonText = config.get(buttons, "continueButtonText", "Continue to Game", "Text to display on the button").getString();
 		addLinkButton = config.get(buttons, "addLinkButton", true, "Add a second button that has a link attached to it. Clicking the button will open the link in the user's default browser.").getBoolean(displayGuiOnLaunch);
 		linkButtonText = config.get(buttons, "linkButtonText", "Latest Release", "Text to display on the button.").getString();
 		linkButtonLink = config.get(buttons, "linkButtonLink", "http://tehnut.info/jenkins/job/LaunchGUI-1.7.10/", "Link to open when button is clicked.").getString();
+
+		enableUpdateChecker = config.get(update, "enableUpdateChecker", true, "Enables checking for updates based on a hosted text file.").getBoolean(enableUpdateChecker);
+		updateCheckerURL = config.get(update, "updateCheckerURL", "https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt", "URL to check for an update with.").getString();
+		currentPackVersion = config.get(update, "currentPackVersion", "1.5", "Pack version that the end user is going to be downloading.").getString();
 
 		if(config.hasChanged()) {
 			config.save();
