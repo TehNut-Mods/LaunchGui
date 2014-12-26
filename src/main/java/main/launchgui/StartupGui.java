@@ -22,6 +22,7 @@ public class StartupGui extends GuiScreen {
 
 		if (ConfigHandler.enableUpdateChecker && Utils.isUpdateAvailable() && ConfigHandler.disableContinueIfUpdatable) {
 			this.buttonList.clear();
+			this.buttonList.add(new GuiButton(1, this.width / 2 - 144, this.height / 2 + 96, 288, 20, ConfigHandler.linkButtonText));
 			showUpdateText = true;
 		}
 	}
@@ -44,11 +45,11 @@ public class StartupGui extends GuiScreen {
 			if (ConfigHandler.enableUpdateChecker && Utils.isUpdateAvailable()) {
 				drawCenteredString(this.fontRendererObj, TextHelper.BRIGHT_GREEN + TextHelper.localize("info.launchgui.update"), this.width - 70, this.height / 2 - 115, 0xFFFFFF);
 			}
-			super.drawScreen(par1, par2, par3);
 		} else {
 			drawCenteredString(this.fontRendererObj, TextHelper.BRIGHT_GREEN + TextHelper.localize("info.launchgui.update"), this.width / 2, this.height / 2 - 70, 0xFFFFFF);
 			drawCenteredString(this.fontRendererObj, TextHelper.ORANGE + String.format(TextHelper.localize("info.launchgui.update.version"), Utils.getRemoteVersion()), this.width / 2, this.height / 2 - 55, 0xFFFFFF);
 		}
+		super.drawScreen(par1, par2, par3);
 	}
 
 	@SuppressWarnings("unchecked")
