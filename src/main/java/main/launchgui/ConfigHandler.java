@@ -37,6 +37,7 @@ public class ConfigHandler {
 	public static boolean enableUpdateChecker;
 	public static String currentPackVersion;
 	public static String updateCheckerURL;
+	public static boolean disableContinueIfUpdatable;
 
 	public static File cfg;
 
@@ -71,6 +72,7 @@ public class ConfigHandler {
 		enableUpdateChecker = config.get(update, "enableUpdateChecker", true, "Enables checking for updates based on a hosted text file.").getBoolean(enableUpdateChecker);
 		updateCheckerURL = config.get(update, "updateCheckerURL", "https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt", "URL to check for an update with.").getString();
 		currentPackVersion = config.get(update, "currentPackVersion", "1.5", "Pack version that the end user is going to be downloading.").getString();
+		disableContinueIfUpdatable = config.get(update, "disableContinueIfUpdatable", false, "Disables ability to continue to game if an update is available.").getBoolean(disableContinueIfUpdatable);
 
 		if(config.hasChanged()) {
 			config.save();

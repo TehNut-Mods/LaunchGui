@@ -18,7 +18,7 @@ public class Utils {
 		return browseDESKTOP(uri);
 	}
 
-	private static String getRemoteVersion() {
+	public static String getRemoteVersion() {
 		try {
 			URL url = new URL(ConfigHandler.updateCheckerURL);
 			Scanner scanner = new Scanner(url.openStream());
