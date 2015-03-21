@@ -10,8 +10,10 @@ import java.util.Scanner;
 
 public class Utils {
 
+    private static boolean checkUpdate = true;
+
 	public static boolean isUpdateAvailable() {
-		return !ConfigHandler.currentPackVersion.equals(getRemoteVersion());
+		return !ConfigHandler.currentPackVersion.equals(getRemoteVersion()) && !getRemoteVersion().equals("");
 	}
 
 	public static boolean browse(URI uri) {
@@ -19,14 +21,17 @@ public class Utils {
 	}
 
 	public static String getRemoteVersion() {
-		try {
-			URL url = new URL(ConfigHandler.updateCheckerURL);
-			Scanner scanner = new Scanner(url.openStream());
-			return scanner.nextLine();
-		} catch (IOException e) {
-			LaunchGui.logger.info("Error returned while attempting to check for an update.");
-			e.printStackTrace();
-		}
+        if (checkUpdate) {
+            try {
+                URL url = new URL(ConfigHandler.updateCheckerURL);
+                Scanner scanner = new Scanner(url.openStream());
+                return scanner.nextLine();
+            } catch (IOException e) {
+                LaunchGui.logger.error("Error returned while attempting to check for an update.");
+            }
+        }
+
+        checkUpdate = false;
 
 		return "";
 	}
