@@ -115,3 +115,7 @@ publishing {
         }
     }
 }
+
+fileTree('gradle').include('curse.gradle').collect().sort().each {
+    apply from: it
+}
