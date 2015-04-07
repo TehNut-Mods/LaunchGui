@@ -42,6 +42,9 @@ minecraft {
     version = "${mc_version}-${forge_version}"
     runDir = "run"
 
+	replaceIn "ModInformation.java"
+    replace "@VERSION@", project.version
+	
     if (project.hasProperty('mappings_version'))
         mappings = project.mappings_version
 }

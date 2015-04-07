@@ -25,19 +25,19 @@ public class GuiStartup extends GuiScreen {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void drawScreen(int par1, int par2, float par3) {
         drawDefaultBackground();
 
+        int heightLoc = 85;
+
         drawCenteredString(this.fontRendererObj, EnumChatFormatting.YELLOW + ConfigHandler.startupGuiTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine1, this.width / 2, this.height / 2 - 85, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine2, this.width / 2, this.height / 2 - 70, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine3, this.width / 2, this.height / 2 - 55, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine4, this.width / 2, this.height / 2 - 40, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine5, this.width / 2, this.height / 2 - 25, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine6, this.width / 2, this.height / 2 - 10, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine7, this.width / 2, this.height / 2 + 5, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine8, this.width / 2, this.height / 2 + 20, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, ConfigHandler.startupGuiLine9, this.width / 2, this.height / 2 + 35, 0xFFFFFF);
+        List<String> lines = fontRendererObj.listFormattedStringToWidth(ConfigHandler.startupGuiLines, this.width - 40);
+        for (int i = 0; i < lines.size(); i++) {
+            String info = lines.get(i);
+            drawCenteredString(this.fontRendererObj, info, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
+            heightLoc = heightLoc - 15;
+        }
         
         super.drawScreen(par1, par2, par3);
     }

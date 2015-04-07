@@ -1,6 +1,5 @@
 package tehnut.launchgui.gui;
 
-import main.launchgui.Utils;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -8,6 +7,7 @@ import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 import tehnut.launchgui.utils.LogHelper;
 import tehnut.launchgui.utils.TextHelper;
+import tehnut.launchgui.utils.Utils;
 
 import java.net.URI;
 import java.util.List;

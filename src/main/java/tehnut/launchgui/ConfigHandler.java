@@ -17,17 +17,8 @@ public class ConfigHandler {
     public static String linkButtonText;
     public static String linkButtonUrl;
     public static String continueButtonText;
-
     public static String startupGuiTitle;
-    public static String startupGuiLine1;
-    public static String startupGuiLine2;
-    public static String startupGuiLine3;
-    public static String startupGuiLine4;
-    public static String startupGuiLine5;
-    public static String startupGuiLine6;
-    public static String startupGuiLine7;
-    public static String startupGuiLine8;
-    public static String startupGuiLine9;
+    public static String startupGuiLines;
 
     public static boolean enableUpdateChecker;
     public static boolean disableContinueButtonIfUpdate;
@@ -56,18 +47,8 @@ public class ConfigHandler {
         linkButtonText = config.getString("linkButtonText", category, "My Website", "Text to display on the link button.");
         linkButtonUrl = config.getString("linkButtonUrl", category, "http://tehnut.info/", "Link to open when clicked.");
         continueButtonText = config.getString("continueButtonText", category, "Continue", "Text to display on the continue button.");
-
-        category = "Startup Gui Text";
         startupGuiTitle = config.getString("startupGuiTitle", category, "TITLE", "Title of the startup GUI. Shows as yellow text.");
-        startupGuiLine1 = config.getString("startupGuiLine1", category, "", "These are your information info lines in the GUI");
-        startupGuiLine2 = config.get(category, "startupGuiLine2", "").getString();
-        startupGuiLine3 = config.get(category, "startupGuiLine3", "").getString();
-        startupGuiLine4 = config.get(category, "startupGuiLine4", "").getString();
-        startupGuiLine5 = config.get(category, "startupGuiLine5", "").getString();
-        startupGuiLine6 = config.get(category, "startupGuiLine6", "").getString();
-        startupGuiLine7 = config.get(category, "startupGuiLine7", "").getString();
-        startupGuiLine8 = config.get(category, "startupGuiLine8", "").getString();
-        startupGuiLine9 = config.get(category, "startupGuiLine9", "").getString();
+        startupGuiLines = config.getString("startupGuiLines", category, "", "These are your information info lines in the GUI");
 
         category = "Update Checker";
         enableUpdateChecker = config.getBoolean("enableUpdateChecker", category, false, "Enables the update checker.");
