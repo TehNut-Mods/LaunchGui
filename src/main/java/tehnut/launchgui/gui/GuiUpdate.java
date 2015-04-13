@@ -4,7 +4,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
 import tehnut.launchgui.ConfigHandler;
-import tehnut.launchgui.LaunchGui;
 import tehnut.launchgui.utils.LogHelper;
 import tehnut.launchgui.utils.TextHelper;
 import tehnut.launchgui.utils.Utils;
@@ -27,12 +26,19 @@ public class GuiUpdate extends GuiScreen {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void drawScreen(int par1, int par2, float par3) {
         drawDefaultBackground();
 
-        drawCenteredString(this.fontRendererObj, EnumChatFormatting.GREEN + TextHelper.localize("gui.launchgui.update.avail"), this.width / 2, this.height / 2 - 40, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, String.format(TextHelper.localize("gui.launchgui.update.avail.version"), LaunchGui.remoteVersion), this.width / 2, this.height / 2 - 25, 0xFFFFFF);
-        drawCenteredString(this.fontRendererObj, TextHelper.localize("gui.launchgui.update.avail.info"), this.width / 2, this.height / 2 - 10, 0xFFFFFF);
+        int heightLoc = 85;
+
+        drawCenteredString(this.fontRendererObj, EnumChatFormatting.GREEN + TextHelper.localize("gui.launchgui.update.avail"), this.width / 2, this.height / 2 - 100, 0xFFFFFF);
+        List<String> lines = fontRendererObj.listFormattedStringToWidth(ConfigHandler.updateGuiLines, this.width - 40);
+        for (int i = 0; i < lines.size(); i++) {
+            String info = lines.get(i);
+            drawCenteredString(this.fontRendererObj, info, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
+            heightLoc = heightLoc - 15;
+        }
 
         super.drawScreen(par1, par2, par3);
     }

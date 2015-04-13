@@ -5,7 +5,6 @@ import net.minecraft.util.StatCollector;
 public class TextHelper {
 
     /**
-     *
      * @param key - Unlocalized key to localize
      * @return - Localized string
      */
@@ -14,8 +13,7 @@ public class TextHelper {
     }
 
     /**
-     *
-     * @param key - Unlocalized key to localize
+     * @param key       - Unlocalized key to localize
      * @param keyFormat - Unlocalized key to localize and format with
      * @return - Localized string
      */

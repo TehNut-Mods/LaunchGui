@@ -22,6 +22,7 @@ public class ConfigHandler {
 
     public static boolean enableUpdateChecker;
     public static boolean disableContinueButtonIfUpdate;
+    public static String updateGuiLines;
     public static String updateCheckerUrl;
     public static String updateInformationButtonText;
     public static String updateInformationUrl;
@@ -40,31 +41,41 @@ public class ConfigHandler {
         String category;
 
         category = "Startup Gui";
-        showGuiOnStartup = config.getBoolean("showGuiOnStartup", category, true, "Whether or not to show the GUI on startup. Used internally, do not touch.");
-        modToFind = config.getString("modToFind", category, "", "Put a modid here to only load if that mod is installed. Leave blank to not check for a mod at all.");
-        disableGuiAfterViewed = config.getBoolean("disableGuiAfterViewed", category, true, "Whether to disable the GUI after it has been viewed before.\nSet to false to show GUI on every startup. Still requires showGuiOnStartup to be true.");
-        enableLinkButton = config.getBoolean("enableLinkButton", category, true, "Add a second button that has a link attached to it. Clicking the button will open the link in the user's default browser.");
-        linkButtonText = config.getString("linkButtonText", category, "My Website", "Text to display on the link button.");
-        linkButtonUrl = config.getString("linkButtonUrl", category, "http://tehnut.info/", "Link to open when clicked.");
-        continueButtonText = config.getString("continueButtonText", category, "Continue", "Text to display on the continue button.");
-        startupGuiTitle = config.getString("startupGuiTitle", category, "TITLE", "Title of the startup GUI. Shows as yellow text.");
-        startupGuiLines = config.getString("startupGuiLines", category, "", "These are your information info lines in the GUI");
+        config.addCustomCategoryComment(category, "Settings for the GUI shown on startup.");
+        config.addCustomCategoryComment(category + ".button", "Settings related to the shown buttons.");
+        config.addCustomCategoryComment(category + ".internal", "Settings for the internal checking that the GUI does.");
+        config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
+        showGuiOnStartup = config.getBoolean("showGuiOnStartup", category + ".internal", true, "Whether or not to show the GUI on startup. Used internally, do not touch.");
+        modToFind = config.getString("modToFind", category + ".internal", "", "Put a modid here to only load if that mod is installed. Leave blank to not check for a mod at all.");
+        disableGuiAfterViewed = config.getBoolean("disableGuiAfterViewed", category + ".internal", true, "Whether to disable the GUI after it has been viewed before.\nSet to false to show GUI on every startup. Still requires showGuiOnStartup to be true.");
+        enableLinkButton = config.getBoolean("enableLinkButton", category + ".button", true, "Add a second button that has a link attached to it. Clicking the button will open the link in the user's default browser.");
+        linkButtonText = config.getString("linkButtonText", category + ".button", "My Website", "Text to display on the link button.");
+        linkButtonUrl = config.getString("linkButtonUrl", category + ".button", "http://tehnut.info/", "Link to open when clicked.");
+        continueButtonText = config.getString("continueButtonText", category + ".button", "Continue", "Text to display on the continue button.");
+        startupGuiTitle = config.getString("startupGuiTitle", category + ".information", "TITLE", "Title of the startup GUI. Shows as yellow text.");
+        startupGuiLines = config.getString("startupGuiLines", category + ".information", "", "These are your information info lines in the GUI");
 
         category = "Update Checker";
-        enableUpdateChecker = config.getBoolean("enableUpdateChecker", category, false, "Enables the update checker.");
-        disableContinueButtonIfUpdate = config.getBoolean("disableContinueButtonIfUpdate", category, false, "Disable the Continue button if there is a pack update available.");
-        updateCheckerUrl = config.getString("updateCheckerUrl", category, "", "URL to check for a new version. Required a raw text file. See here for an example:\nhttps://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt");
-        updateInformationButtonText = config.getString("updateInformationButtonText", category, "Changelog", "Text to display on update information button");
-        updateInformationUrl = config.getString("updateInformationUrl", category, "", "A URL to a page with information about the pack/update.");
-        currentPackVersion = config.getString("currentPackVersion", category, "", "The version of your pack currently being shipped.");
+        config.addCustomCategoryComment(category, "Settings for the GUI shown when an update is available.");
+        config.addCustomCategoryComment(category + ".button", "Settings related to the shown buttons.");
+        config.addCustomCategoryComment(category + ".internal", "Settings for the internal checking that the GUI does.");
+        config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
+        enableUpdateChecker = config.getBoolean("enableUpdateChecker", category + ".internal", false, "Enables the update checker.");
+        disableContinueButtonIfUpdate = config.getBoolean("disableContinueButtonIfUpdate", category + ".internal", false, "Disable the Continue button if there is a pack update available.");
+        updateGuiLines = config.getString("updateGuiLines", category + ".information", "Click the information button below to find out more!", "Information to display to your players whenever a new update is available.");
+        updateCheckerUrl = config.getString("updateCheckerUrl", category + ".information", "", "URL to check for a new version. Required a raw text file.\nSee here for an example: https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt");
+        updateInformationButtonText = config.getString("updateInformationButtonText", category + ".button", "Changelog", "Text to display on update information button");
+        updateInformationUrl = config.getString("updateInformationUrl", category + ".information", "", "A URL to a forum page (or similar) with information about the pack/update.");
+        currentPackVersion = config.getString("currentPackVersion", category + ".information", "", "The version of your pack currently being shipped.");
 
         category = "Miscellaneous";
+        config.addCustomCategoryComment(category, "General settings that don't fall under other categories.");
         enableLogging = config.getBoolean("enableLogging", category, true, "Enables logging information to the console.");
 
         config.save();
     }
 
-    public static boolean manuallyChangeConfigValue(String filePathFromConfigFolder, String prefix, String from, String to)	{
+    public static boolean manuallyChangeConfigValue(String filePathFromConfigFolder, String prefix, String from, String to) {
         File config = filePathFromConfigFolder == null ? cfg : new File("config/LaunchGui.cfg");
         boolean found = false;
 
@@ -74,9 +85,8 @@ public class ConfigHandler {
 
             ArrayList<String> strings = new ArrayList<String>();
 
-            while (read.ready()) {
+            while (read.ready())
                 strings.add(read.readLine());
-            }
 
             fr1.close();
             read.close();
@@ -96,8 +106,7 @@ public class ConfigHandler {
 
             bw.flush();
             bw.close();
-        }
-        catch (Throwable t) {
+        } catch (Throwable t) {
             t.printStackTrace();
         }
 

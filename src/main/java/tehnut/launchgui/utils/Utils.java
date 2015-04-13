@@ -4,10 +4,9 @@ import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 
 import java.awt.*;
-import java.io.*;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Utils {
@@ -15,7 +14,7 @@ public class Utils {
     private static boolean checkUpdate = true;
 
     public static boolean hasUpdate() {
-        return ConfigHandler.enableUpdateChecker && !LaunchGui.remoteVersion.equals(ConfigHandler.currentPackVersion) && !LaunchGui.remoteVersion.equals("");
+        return ConfigHandler.enableUpdateChecker && !LaunchGui.remoteVersion.equals(ConfigHandler.currentPackVersion) && !LaunchGui.remoteVersion.equals("") && !ConfigHandler.updateCheckerUrl.equals("");
     }
 
     public static String getRemoteVersion() {
@@ -23,6 +22,7 @@ public class Utils {
             try {
                 URL url = new URL(ConfigHandler.updateCheckerUrl);
                 Scanner scanner = new Scanner(url.openStream());
+                checkUpdate = false;
                 return scanner.nextLine();
             } catch (IOException e) {
                 LogHelper.error("Error returned while attempting to check for an update.");
@@ -35,7 +35,6 @@ public class Utils {
     }
 
     /**
-     *
      * @param uri - The {@link java.net.URI} to browse to.
      * @return - Whether the {@link java.net.URI} was opened.
      */

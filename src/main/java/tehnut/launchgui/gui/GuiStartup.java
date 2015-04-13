@@ -38,7 +38,7 @@ public class GuiStartup extends GuiScreen {
             drawCenteredString(this.fontRendererObj, info, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
             heightLoc = heightLoc - 15;
         }
-        
+
         super.drawScreen(par1, par2, par3);
     }
 
