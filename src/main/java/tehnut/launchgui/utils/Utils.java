@@ -35,8 +35,8 @@ public class Utils {
     }
 
     /**
-     * @param uri - The {@link java.net.URI} to browse to.
-     * @return - Whether the {@link java.net.URI} was opened.
+     * @param uri - The {@link URI} to browse to.
+     * @return - Whether the {@link URI} was opened.
      */
     public static boolean browse(URI uri) {
         return browseDESKTOP(uri);
