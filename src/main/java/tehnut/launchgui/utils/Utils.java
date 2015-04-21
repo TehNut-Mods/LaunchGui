@@ -12,9 +12,31 @@ import java.util.Scanner;
 public class Utils {
 
     private static boolean checkUpdate = true;
+    private static boolean checkText = true;
+
+    public static boolean hasNotice() {
+        return ConfigHandler.enableNoticeGui && !LaunchGui.remoteText.equals("") && !ConfigHandler.infoUrl.equals("");
+    }
 
     public static boolean hasUpdate() {
         return ConfigHandler.enableUpdateChecker && !LaunchGui.remoteVersion.equals(ConfigHandler.currentPackVersion) && !LaunchGui.remoteVersion.equals("") && !ConfigHandler.updateCheckerUrl.equals("");
+    }
+
+    public static String getRemoteText() {
+        if (checkText) {
+            try {
+                URL url = new URL(ConfigHandler.infoUrl);
+                Scanner scanner = new Scanner(url.openStream());
+                checkText = false;
+                return scanner.nextLine();
+            } catch (IOException e) {
+                LogHelper.error("Error returned while obtaining the notice information.");
+            }
+        }
+
+        checkText = false;
+
+        return "";
     }
 
     public static String getRemoteVersion() {

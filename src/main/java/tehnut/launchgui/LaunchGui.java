@@ -14,10 +14,10 @@ import java.io.File;
 public class LaunchGui {
 
     @Mod.Instance
-    public static LaunchGui instance;
     public static Configuration config;
 
     public static String remoteVersion;
+    public static String remoteText;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -25,6 +25,9 @@ public class LaunchGui {
 
         if (ConfigHandler.enableUpdateChecker)
             remoteVersion = Utils.getRemoteVersion();
+
+        if (ConfigHandler.enableNoticeGui)
+            remoteText = Utils.getRemoteText();
 
         FMLCommonHandler.instance().bus().register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new EventHandler());

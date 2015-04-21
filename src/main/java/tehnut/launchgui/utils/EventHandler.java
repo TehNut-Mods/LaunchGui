@@ -7,6 +7,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import tehnut.launchgui.ConfigHandler;
+import tehnut.launchgui.gui.GuiNotice;
 import tehnut.launchgui.gui.GuiStartup;
 import tehnut.launchgui.gui.GuiUpdate;
 
@@ -25,10 +26,15 @@ public class EventHandler {
                     return;
                 }
 
+                if (Utils.hasNotice()) {
+                    event.gui = new GuiNotice();
+                    shouldLoadGUI = false;
+                    return;
+                }
+
                 if (ConfigHandler.showGuiOnStartup && (Loader.isModLoaded(ConfigHandler.modToFind) || ConfigHandler.modToFind.equals(""))) {
                     event.gui = new GuiStartup();
                     shouldLoadGUI = false;
-                    return;
                 }
             }
         }

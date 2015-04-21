@@ -28,6 +28,12 @@ public class ConfigHandler {
     public static String updateInformationUrl;
     public static String currentPackVersion;
 
+    public static boolean enableNoticeGui;
+    public static String infoButtonText;
+    public static String infoButtonUrl;
+    public static String infoTitle;
+    public static String infoUrl;
+
     public static boolean enableLogging;
 
     public static File cfg;
@@ -67,6 +73,17 @@ public class ConfigHandler {
         updateInformationButtonText = config.getString("updateInformationButtonText", category + ".button", "Changelog", "Text to display on update information button");
         updateInformationUrl = config.getString("updateInformationUrl", category + ".information", "", "A URL to a forum page (or similar) with information about the pack/update.");
         currentPackVersion = config.getString("currentPackVersion", category + ".information", "", "The version of your pack currently being shipped.");
+
+        category = "Notice";
+        config.addCustomCategoryComment(category, "Gui that loads if a text file at a specified URL exists and is not empty.");
+        config.addCustomCategoryComment(category + ".button", "Settings related to the shown buttons.");
+        config.addCustomCategoryComment(category + ".internal", "Settings for the internal checking that the GUI does.");
+        config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
+        enableNoticeGui = config.getBoolean("enableNoticeGui", category + ".internal", false, "Enables the notice GUI");
+        infoButtonText = config.getString("infoButtonText", category + ".button", "Information", "Text to display on info button");
+        infoButtonUrl = config.getString("infoButtonUrl", category + ".button", "", "URL that the info button sends you to");
+        infoTitle = config.getString("infoTitle", category + ".information", "Important Notice", "Title to display at the top");
+        infoUrl = config.getString("infoUrl", category + ".information", "", "URL to pull information from");
 
         category = "Miscellaneous";
         config.addCustomCategoryComment(category, "General settings that don't fall under other categories.");
