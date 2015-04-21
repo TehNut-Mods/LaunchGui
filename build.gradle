@@ -128,7 +128,7 @@ curseforge {
         apiKey = project.curse_key
 
     project {
-        id = '228832'
+        id = '228810'
         changelog = project.hasProperty('changelog') ? project.changelog : ''
         releaseType = 'release'
 
