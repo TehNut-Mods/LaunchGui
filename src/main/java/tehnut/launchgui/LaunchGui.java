@@ -14,6 +14,7 @@ import java.io.File;
 public class LaunchGui {
 
     @Mod.Instance
+    public static LaunchGui instance;
     public static Configuration config;
 
     public static String remoteVersion;
