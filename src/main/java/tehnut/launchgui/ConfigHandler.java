@@ -59,7 +59,7 @@ public class ConfigHandler {
         linkButtonUrl = config.getString("linkButtonUrl", category + ".button", "http://tehnut.info/", "Link to open when clicked.");
         continueButtonText = config.getString("continueButtonText", category + ".button", "Continue", "Text to display on the continue button.");
         startupGuiTitle = config.getString("startupGuiTitle", category + ".information", "TITLE", "Title of the startup GUI. Shows as yellow text.");
-        startupGuiLines = config.getString("startupGuiLines", category + ".information", "", "These are your information info lines in the GUI");
+        startupGuiLines = config.getString("startupGuiLines", category + ".information", "", "These are your information info lines in the GUI\nUse \"\\n\" to define a new line. If the line is still too long, it will split for you.\nIf you do not use custom splits, it will just use the automated ones.");
 
         category = "Update Checker";
         config.addCustomCategoryComment(category, "Settings for the GUI shown when an update is available.");
