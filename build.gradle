@@ -133,7 +133,7 @@ curseforge {
         releaseType = 'release'
 
         mainArtifact(jar) {
-            displayName = "LaunchGui - ${mod_version}-${build_number}"
+            displayName = "LaunchGui - ${mc_version} - ${mod_version}-${build_number}"
         }
 
         addArtifact deobfJar
