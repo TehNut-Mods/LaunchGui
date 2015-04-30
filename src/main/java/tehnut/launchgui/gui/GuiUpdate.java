@@ -33,11 +33,15 @@ public class GuiUpdate extends GuiScreen {
         int heightLoc = 85;
 
         drawCenteredString(this.fontRendererObj, EnumChatFormatting.GREEN + TextHelper.localize("gui.launchgui.update.avail"), this.width / 2, this.height / 2 - 100, 0xFFFFFF);
-        List<String> lines = fontRendererObj.listFormattedStringToWidth(ConfigHandler.updateGuiLines, this.width - 40);
-        for (int i = 0; i < lines.size(); i++) {
-            String info = lines.get(i);
-            drawCenteredString(this.fontRendererObj, info, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
-            heightLoc = heightLoc - 15;
+
+        String[] lines = ConfigHandler.updateGuiLines.replace("\\n", "\n").split("\n");
+        for (String s : lines) {
+
+            List<String> info = fontRendererObj.listFormattedStringToWidth(s, this.width - 40);
+            for (String infoCut : info) {
+                drawCenteredString(this.fontRendererObj, infoCut, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
+                heightLoc = heightLoc - 12;
+            }
         }
 
         super.drawScreen(par1, par2, par3);
