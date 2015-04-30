@@ -1,5 +1,6 @@
 package tehnut.launchgui.utils;
 
+import cpw.mods.fml.common.Loader;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 
@@ -54,6 +55,14 @@ public class Utils {
         checkUpdate = false;
 
         return "";
+    }
+
+    public static boolean shouldLoadFromModSearch() {
+        if (ConfigHandler.invertModFinder) {
+            return !Loader.isModLoaded(ConfigHandler.modToFind);
+        } else {
+            return Loader.isModLoaded(ConfigHandler.modToFind) || ConfigHandler.modToFind.equals("");
+        }
     }
 
     /**

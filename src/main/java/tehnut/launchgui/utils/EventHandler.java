@@ -1,6 +1,5 @@
 package tehnut.launchgui.utils;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,7 +31,7 @@ public class EventHandler {
                     return;
                 }
 
-                if (ConfigHandler.showGuiOnStartup && (Loader.isModLoaded(ConfigHandler.modToFind) || ConfigHandler.modToFind.equals(""))) {
+                if (ConfigHandler.showGuiOnStartup && Utils.shouldLoadFromModSearch()) {
                     event.gui = new GuiStartup();
                     shouldLoadGUI = false;
                 }

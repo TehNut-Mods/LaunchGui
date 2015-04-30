@@ -11,6 +11,7 @@ public class ConfigHandler {
     public static Configuration config;
 
     public static boolean showGuiOnStartup;
+    public static boolean invertModFinder;
     public static String modToFind;
     public static boolean disableGuiAfterViewed;
     public static boolean enableLinkButton;
@@ -53,6 +54,7 @@ public class ConfigHandler {
         config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
         showGuiOnStartup = config.getBoolean("showGuiOnStartup", category + ".internal", true, "Whether or not to show the GUI on startup. Used internally, do not touch.");
         modToFind = config.getString("modToFind", category + ".internal", "", "Put a modid here to only load if that mod is installed. Leave blank to not check for a mod at all.");
+        invertModFinder = config.getBoolean("invertModFinder", category + ".internal", false, "False- Displays Gui when the specified mod is found.\nTrue- Displays Gui when the specified mod is *not* found.");
         disableGuiAfterViewed = config.getBoolean("disableGuiAfterViewed", category + ".internal", true, "Whether to disable the GUI after it has been viewed before.\nSet to false to show GUI on every startup. Still requires showGuiOnStartup to be true.");
         enableLinkButton = config.getBoolean("enableLinkButton", category + ".button", true, "Add a second button that has a link attached to it. Clicking the button will open the link in the user's default browser.");
         linkButtonText = config.getString("linkButtonText", category + ".button", "My Website", "Text to display on the link button.");
