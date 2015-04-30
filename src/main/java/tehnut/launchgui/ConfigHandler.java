@@ -70,7 +70,7 @@ public class ConfigHandler {
         config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
         enableUpdateChecker = config.getBoolean("enableUpdateChecker", category + ".internal", false, "Enables the update checker.");
         disableContinueButtonIfUpdate = config.getBoolean("disableContinueButtonIfUpdate", category + ".internal", false, "Disable the Continue button if there is a pack update available.");
-        updateGuiLines = config.getString("updateGuiLines", category + ".information", "Click the information button below to find out more!", "Information to display to your players whenever a new update is available.");
+        updateGuiLines = config.getString("updateGuiLines", category + ".information", "Click the information button below to find out more!", "Information to display to your players whenever a new update is available.\nUse \"\\n\" to define a new line. If the line is still too long, it will split for you.\nIf you do not use custom splits, it will just use the automated ones.");
         updateCheckerUrl = config.getString("updateCheckerUrl", category + ".information", "", "URL to check for a new version. Required a raw text file.\nSee here for an example: https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt");
         updateInformationButtonText = config.getString("updateInformationButtonText", category + ".button", "Changelog", "Text to display on update information button");
         updateInformationUrl = config.getString("updateInformationUrl", category + ".information", "", "A URL to a forum page (or similar) with information about the pack/update.");
@@ -85,7 +85,7 @@ public class ConfigHandler {
         infoButtonText = config.getString("infoButtonText", category + ".button", "Information", "Text to display on info button");
         infoButtonUrl = config.getString("infoButtonUrl", category + ".button", "", "URL that the info button sends you to");
         infoTitle = config.getString("infoTitle", category + ".information", "Important Notice", "Title to display at the top");
-        infoUrl = config.getString("infoUrl", category + ".information", "", "URL to pull information from");
+        infoUrl = config.getString("infoUrl", category + ".information", "", "URL to pull information from.\nUse \"\\n\" to define a new line. If the line is still too long, it will split for you.\nIf you do not use custom splits, it will just use the automated ones.");
 
         category = "Miscellaneous";
         config.addCustomCategoryComment(category, "General settings that don't fall under other categories.");
