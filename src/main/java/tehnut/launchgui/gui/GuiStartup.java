@@ -38,7 +38,7 @@ public class GuiStartup extends GuiScreen {
 
             List<String> info = fontRendererObj.listFormattedStringToWidth(s, this.width - 40);
             for (String infoCut : info) {
-                drawCenteredString(this.fontRendererObj, infoCut, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
+                drawCenteredString(this.fontRendererObj, Utils.replaceTextCodes(infoCut), this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
                 heightLoc = heightLoc - 12;
             }
         }

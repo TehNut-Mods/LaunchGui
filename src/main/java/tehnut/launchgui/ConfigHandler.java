@@ -35,6 +35,10 @@ public class ConfigHandler {
     public static String infoTitle;
     public static String infoUrl;
 
+    public static String modpackName;
+    public static String modpackAcronym;
+    public static String modpackVersion;
+
     public static boolean enableLogging;
 
     public static File cfg;
@@ -61,7 +65,14 @@ public class ConfigHandler {
         linkButtonUrl = config.getString("linkButtonUrl", category + ".button", "http://tehnut.info/", "Link to open when clicked.");
         continueButtonText = config.getString("continueButtonText", category + ".button", "Continue", "Text to display on the continue button.");
         startupGuiTitle = config.getString("startupGuiTitle", category + ".information", "TITLE", "Title of the startup GUI. Shows as yellow text.");
-        startupGuiLines = config.getString("startupGuiLines", category + ".information", "", "These are your information info lines in the GUI\nUse \"\\n\" to define a new line. If the line is still too long, it will split for you.\nIf you do not use custom splits, it will just use the automated ones.");
+        startupGuiLines = config.getString("startupGuiLines", category + ".information", "", "These are your information info lines in the GUI\n" +
+                "Use \"\\n\" to define a new line. If the line is still too long, it will split for you.\n" +
+                "If you do not use custom splits, it will just use the automated ones.\n" +
+                "Valid text codes you can use are:\n" +
+                "%player% - Provides the player's username.\n" +
+                "%name% - Provides modpackName\n" +
+                "%version% - Provides modpackVersion\n" +
+                "%acro% - Provides modpackAcronym");
 
         category = "Update Checker";
         config.addCustomCategoryComment(category, "Settings for the GUI shown when an update is available.");
@@ -70,7 +81,14 @@ public class ConfigHandler {
         config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
         enableUpdateChecker = config.getBoolean("enableUpdateChecker", category + ".internal", false, "Enables the update checker.");
         disableContinueButtonIfUpdate = config.getBoolean("disableContinueButtonIfUpdate", category + ".internal", false, "Disable the Continue button if there is a pack update available.");
-        updateGuiLines = config.getString("updateGuiLines", category + ".information", "Click the information button below to find out more!", "Information to display to your players whenever a new update is available.\nUse \"\\n\" to define a new line. If the line is still too long, it will split for you.\nIf you do not use custom splits, it will just use the automated ones.");
+        updateGuiLines = config.getString("updateGuiLines", category + ".information", "Click the information button below to find out more!", "Information to display to your players whenever a new update is available.\n" +
+                "Use \"\\n\" to define a new line. If the line is still too long, it will split for you.\n" +
+                "If you do not use custom splits, it will just use the automated ones.\n" +
+                "Valid text codes you can use are:\n" +
+                "%player% - Provides the player's username.\n" +
+                "%name% - Provides modpackName\n" +
+                "%version% - Provides modpackVersion\n" +
+                "%acro% - Provides modpackAcronym");
         updateCheckerUrl = config.getString("updateCheckerUrl", category + ".information", "", "URL to check for a new version. Required a raw text file.\nSee here for an example: https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt");
         updateInformationButtonText = config.getString("updateInformationButtonText", category + ".button", "Changelog", "Text to display on update information button");
         updateInformationUrl = config.getString("updateInformationUrl", category + ".information", "", "A URL to a forum page (or similar) with information about the pack/update.");
@@ -85,7 +103,20 @@ public class ConfigHandler {
         infoButtonText = config.getString("infoButtonText", category + ".button", "Information", "Text to display on info button");
         infoButtonUrl = config.getString("infoButtonUrl", category + ".button", "", "URL that the info button sends you to");
         infoTitle = config.getString("infoTitle", category + ".information", "Important Notice", "Title to display at the top");
-        infoUrl = config.getString("infoUrl", category + ".information", "", "URL to pull information from.\nUse \"\\n\" to define a new line. If the line is still too long, it will split for you.\nIf you do not use custom splits, it will just use the automated ones.");
+        infoUrl = config.getString("infoUrl", category + ".information", "", "URL to pull information from.\n" +
+                "Use \"\\n\" to define a new line. If the line is still too long, it will split for you.\n" +
+                "If you do not use custom splits, it will just use the automated ones.\n" +
+                "Valid text codes you can use are:\n" +
+                "%player% - Provides the player's username.\n" +
+                "%name% - Provides modpackName\n" +
+                "%version% - Provides modpackVersion\n" +
+                "%acro% - Provides modpackAcronym");
+
+        category = "Global";
+        config.addCustomCategoryComment(category, "Global settings that can be used in all GUI's");
+        modpackName = config.getString("modpackName", category, ModInformation.NAME, "The name of your modpack.");
+        modpackAcronym = config.getString("modpackAcronym", category, "LGUI", "The acronym of your modpack.");
+        modpackVersion = config.getString("modpackVersion", category, ModInformation.VERSION, "The current version of your modpack");
 
         category = "Miscellaneous";
         config.addCustomCategoryComment(category, "General settings that don't fall under other categories.");

@@ -1,6 +1,7 @@
 package tehnut.launchgui.utils;
 
 import cpw.mods.fml.common.Loader;
+import net.minecraft.client.Minecraft;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 
@@ -63,6 +64,15 @@ public class Utils {
         } else {
             return Loader.isModLoaded(ConfigHandler.modToFind) || ConfigHandler.modToFind.equals("");
         }
+    }
+
+    public static String replaceTextCodes(String toReplace) {
+        return toReplace
+                .replace("\\n", "\n")
+                .replace("%name%", ConfigHandler.modpackName)
+                .replace("%acro%", ConfigHandler.modpackAcronym)
+                .replace("%version%", ConfigHandler.modpackVersion)
+                .replace("%player%", Minecraft.getMinecraft().getSession().getUsername());
     }
 
     /**
