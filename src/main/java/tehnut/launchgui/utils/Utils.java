@@ -1,7 +1,7 @@
 package tehnut.launchgui.utils;
 
-import cpw.mods.fml.common.Loader;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.common.Loader;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 
@@ -68,6 +68,7 @@ public class Utils {
 
     public static String replaceTextCodes(String toReplace) {
         return toReplace
+                .replace("\\n", "\n")
                 .replace("%name%", ConfigHandler.modpackName)
                 .replace("%acro%", ConfigHandler.modpackAcronym)
                 .replace("%version%", ConfigHandler.modpackVersion)
