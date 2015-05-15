@@ -29,12 +29,12 @@ public class GuiNotice extends GuiScreen {
 
         drawCenteredString(this.fontRendererObj, EnumChatFormatting.YELLOW + ConfigHandler.infoTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
 
-        String[] lines = LaunchGui.remoteText.replace("\\n", "\n").split("\n");
+        String[] lines = Utils.replaceTextCodes(LaunchGui.remoteText).split("\n");
         for (String s : lines) {
 
             List<String> info = fontRendererObj.listFormattedStringToWidth(s, this.width - 40);
             for (String infoCut : info) {
-                drawCenteredString(this.fontRendererObj, Utils.replaceTextCodes(infoCut), this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
+                drawCenteredString(this.fontRendererObj, infoCut, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
                 heightLoc = heightLoc - 12;
             }
         }

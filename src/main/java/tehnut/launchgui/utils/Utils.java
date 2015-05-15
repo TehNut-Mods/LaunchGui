@@ -68,7 +68,6 @@ public class Utils {
 
     public static String replaceTextCodes(String toReplace) {
         return toReplace
-                .replace("\\n", "\n")
                 .replace("%name%", ConfigHandler.modpackName)
                 .replace("%acro%", ConfigHandler.modpackAcronym)
                 .replace("%version%", ConfigHandler.modpackVersion)
