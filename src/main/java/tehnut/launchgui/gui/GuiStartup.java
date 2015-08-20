@@ -25,23 +25,10 @@ public class GuiStartup extends GuiScreen {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void drawScreen(int par1, int par2, float par3) {
         drawDefaultBackground();
-
-        int heightLoc = 85;
-
         drawCenteredString(this.fontRendererObj, EnumChatFormatting.YELLOW + ConfigHandler.startupGuiTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
-
-        String[] lines = Utils.replaceTextCodes(ConfigHandler.startupGuiLines).split("\n");
-        for (String s : lines) {
-
-            List<String> info = fontRendererObj.listFormattedStringToWidth(s, this.width - 40);
-            for (String infoCut : info) {
-                drawCenteredString(this.fontRendererObj, infoCut, this.width / 2, this.height / 2 - heightLoc, 0xFFFFFF);
-                heightLoc = heightLoc - 12;
-            }
-        }
+        Utils.handleGuiText(ConfigHandler.startupGuiLines, fontRendererObj, this, this.width, this.height);
 
         super.drawScreen(par1, par2, par3);
     }

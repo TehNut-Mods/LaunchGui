@@ -89,7 +89,7 @@ public class ConfigHandler {
                 "%name% - Provides modpackName\n" +
                 "%version% - Provides modpackVersion\n" +
                 "%acro% - Provides modpackAcronym");
-        updateCheckerUrl = config.getString("updateCheckerUrl", category + ".information", "", "URL to check for a new version. Required a raw text file.\nSee here for an example: https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt");
+        updateCheckerUrl = config.getString("updateCheckerUrl", category + ".information", "http://tehnut.info", "URL to check for a new version. Required a raw text file.\nSee here for an example: https://raw.githubusercontent.com/TehNut/LaunchGui/1.7.10/version.txt");
         updateInformationButtonText = config.getString("updateInformationButtonText", category + ".button", "Changelog", "Text to display on update information button");
         updateInformationUrl = config.getString("updateInformationUrl", category + ".information", "", "A URL to a forum page (or similar) with information about the pack/update.");
         currentPackVersion = config.getString("currentPackVersion", category + ".information", "", "The version of your pack currently being shipped.");
@@ -101,7 +101,7 @@ public class ConfigHandler {
         config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
         enableNoticeGui = config.getBoolean("enableNoticeGui", category + ".internal", false, "Enables the notice GUI");
         infoButtonText = config.getString("infoButtonText", category + ".button", "Information", "Text to display on info button");
-        infoButtonUrl = config.getString("infoButtonUrl", category + ".button", "", "URL that the info button sends you to");
+        infoButtonUrl = config.getString("infoButtonUrl", category + ".button", "http://tehnut.info", "URL that the info button sends you to");
         infoTitle = config.getString("infoTitle", category + ".information", "Important Notice", "Title to display at the top");
         infoUrl = config.getString("infoUrl", category + ".information", "", "URL to pull information from.\n" +
                 "Use \"\\n\" to define a new line. If the line is still too long, it will split for you.\n" +
