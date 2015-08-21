@@ -1,6 +1,8 @@
 package tehnut.launchgui.utils;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
 import net.minecraftforge.fml.common.Loader;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
@@ -9,7 +11,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
-import java.util.Scanner;
+import java.util.*;
+import java.util.List;
 
 public class Utils {
 
@@ -66,13 +69,30 @@ public class Utils {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public static void handleGuiText(String text, FontRenderer fontRenderer, Gui gui, int width, int height) {
+
+        int heightLoc = 85;
+
+        String[] lines = Utils.replaceTextCodes(text).split("\n");
+        for (String s : lines) {
+
+            List<String> info = fontRenderer.listFormattedStringToWidth(s, width - 40);
+            for (String infoCut : info) {
+                gui.drawCenteredString(fontRenderer, infoCut, width / 2, height / 2 - heightLoc, 0xFFFFFF);
+                heightLoc = heightLoc - 12;
+            }
+        }
+    }
+
     public static String replaceTextCodes(String toReplace) {
         return toReplace
                 .replace("\\n", "\n")
                 .replace("%name%", ConfigHandler.modpackName)
                 .replace("%acro%", ConfigHandler.modpackAcronym)
                 .replace("%version%", ConfigHandler.modpackVersion)
-                .replace("%player%", Minecraft.getMinecraft().getSession().getUsername());
+                .replace("%player%", Minecraft.getMinecraft().getSession().getUsername())
+                .replace("&", "\u00a7");
     }
 
     /**
