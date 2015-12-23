@@ -2,6 +2,7 @@ package tehnut.launchgui.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumChatFormatting;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.utils.LogHelper;
@@ -27,6 +28,10 @@ public class GuiStartup extends GuiScreen {
     @Override
     @SuppressWarnings("unchecked")
     public void drawScreen(int par1, int par2, float par3) {
+        // Don't ask me why this is necessary. If this isn't done, only a white screen will render.
+        GlStateManager.disableTexture2D();
+        GlStateManager.enableTexture2D();
+
         drawDefaultBackground();
         drawCenteredString(this.fontRendererObj, EnumChatFormatting.YELLOW + ConfigHandler.startupGuiTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
         Utils.handleGuiText(ConfigHandler.startupGuiLines, fontRendererObj, this, this.width, this.height);
