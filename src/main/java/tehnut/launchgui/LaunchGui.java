@@ -30,7 +30,7 @@ public class LaunchGui {
         if (ConfigHandler.enableNoticeGui)
             remoteText = Utils.getRemoteText();
 
-        FMLCommonHandler.instance().bus().register(new EventHandler());
-        MinecraftForge.EVENT_BUS.register(new EventHandler());
+        if (event.getSide().isClient())
+            MinecraftForge.EVENT_BUS.register(new EventHandler());
     }
 }
