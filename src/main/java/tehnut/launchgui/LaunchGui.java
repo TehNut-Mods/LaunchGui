@@ -10,7 +10,7 @@ import tehnut.launchgui.utils.Utils;
 
 import java.io.File;
 
-@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, canBeDeactivated = true)
+@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, canBeDeactivated = true, acceptedMinecraftVersions = "[1.8,)")
 public class LaunchGui {
 
     @Mod.Instance
