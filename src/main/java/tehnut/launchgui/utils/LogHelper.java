@@ -3,11 +3,11 @@ package tehnut.launchgui.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tehnut.launchgui.ConfigHandler;
-import tehnut.launchgui.ModInformation;
+import tehnut.launchgui.LaunchGui;
 
 public class LogHelper {
 
-    private static Logger logger = LogManager.getLogger(ModInformation.NAME);
+    private static Logger logger = LogManager.getLogger(LaunchGui.NAME);
 
     public static void info(Object info) {
         if (ConfigHandler.enableLogging)

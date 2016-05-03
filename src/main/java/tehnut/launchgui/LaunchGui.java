@@ -2,7 +2,6 @@ package tehnut.launchgui;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import tehnut.launchgui.utils.EventHandler;
@@ -10,8 +9,13 @@ import tehnut.launchgui.utils.Utils;
 
 import java.io.File;
 
-@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, canBeDeactivated = true, acceptedMinecraftVersions = "[1.8,)")
+@Mod(modid = LaunchGui.ID, name = LaunchGui.NAME, version = LaunchGui.VERSION)
 public class LaunchGui {
+
+    public static final String NAME = "LaunchGui";
+    public static final String ID = "launchgui";
+    public static final String CHANNEL = "LaunchGui";
+    public static final String VERSION = "@VERSION@";
 
     @Mod.Instance
     public static LaunchGui instance;

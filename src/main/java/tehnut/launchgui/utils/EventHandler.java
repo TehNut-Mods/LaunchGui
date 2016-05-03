@@ -18,21 +18,21 @@ public class EventHandler {
     @SideOnly(Side.CLIENT)
     public void openMainMenu(GuiOpenEvent event) {
         if (shouldLoadGUI) {
-            if (event.gui instanceof GuiMainMenu) {
+            if (event.getGui() instanceof GuiMainMenu) {
                 if (Utils.hasUpdate()) {
-                    event.gui = new GuiUpdate();
+                    event.setGui(new GuiUpdate());
                     shouldLoadGUI = false;
                     return;
                 }
 
                 if (Utils.hasNotice()) {
-                    event.gui = new GuiNotice();
+                    event.setGui(new GuiNotice());
                     shouldLoadGUI = false;
                     return;
                 }
 
                 if (ConfigHandler.showGuiOnStartup && Utils.shouldLoadFromModSearch()) {
-                    event.gui = new GuiStartup();
+                    event.setGui(new GuiStartup());
                     shouldLoadGUI = false;
                 }
             }

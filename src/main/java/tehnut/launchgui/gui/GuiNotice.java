@@ -3,18 +3,16 @@ package tehnut.launchgui.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 import tehnut.launchgui.utils.LogHelper;
 import tehnut.launchgui.utils.Utils;
 
 import java.net.URI;
-import java.util.List;
 
 public class GuiNotice extends GuiScreen {
 
-    @SuppressWarnings("unchecked")
     @Override
     public void initGui() {
         this.buttonList.add(new GuiButton(0, this.width / 2 - 154, this.height / 2 + 96, 144, 20, ConfigHandler.continueButtonText));
@@ -22,25 +20,23 @@ public class GuiNotice extends GuiScreen {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public void drawScreen(int par1, int par2, float par3) {
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         // Don't ask me why this is necessary. If this isn't done, only a white screen will render.
         GlStateManager.disableTexture2D();
         GlStateManager.enableTexture2D();
 
         drawDefaultBackground();
-        drawCenteredString(this.fontRendererObj, EnumChatFormatting.YELLOW + ConfigHandler.infoTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
+        drawCenteredString(this.fontRendererObj, TextFormatting.YELLOW + ConfigHandler.infoTitle, this.width / 2, this.height / 2 - 100, 0xFFFFFF);
         Utils.handleGuiText(LaunchGui.remoteText, fontRendererObj, this, this.width, this.height);
 
-        super.drawScreen(par1, par2, par3);
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 0: {
-                for (GuiButton b : (List<GuiButton>) buttonList) {
+                for (GuiButton b : buttonList) {
                     b.enabled = false;
                 }
                 this.mc.displayGuiScreen(null);
@@ -59,7 +55,7 @@ public class GuiNotice extends GuiScreen {
     }
 
     @Override
-    protected void keyTyped(char par1, int par2) {
-        return;
+    protected void keyTyped(char typedChar, int keycode) {
+        // No-op
     }
 }

@@ -114,9 +114,9 @@ public class ConfigHandler {
 
         category = "Global";
         config.addCustomCategoryComment(category, "Global settings that can be used in all GUI's");
-        modpackName = config.getString("modpackName", category, ModInformation.NAME, "The name of your modpack.");
+        modpackName = config.getString("modpackName", category, LaunchGui.NAME, "The name of your modpack.");
         modpackAcronym = config.getString("modpackAcronym", category, "LGUI", "The acronym of your modpack.");
-        modpackVersion = config.getString("modpackVersion", category, ModInformation.VERSION, "The current version of your modpack");
+        modpackVersion = config.getString("modpackVersion", category, LaunchGui.VERSION, "The current version of your modpack");
 
         category = "Miscellaneous";
         config.addCustomCategoryComment(category, "General settings that don't fall under other categories.");
