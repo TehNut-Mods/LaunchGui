@@ -4,6 +4,8 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.LaunchGui;
 import tehnut.launchgui.utils.LogHelper;
@@ -11,6 +13,7 @@ import tehnut.launchgui.utils.Utils;
 
 import java.net.URI;
 
+@SideOnly(Side.CLIENT)
 public class GuiNotice extends GuiScreen {
 
     @Override

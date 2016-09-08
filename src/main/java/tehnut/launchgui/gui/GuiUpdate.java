@@ -5,12 +5,15 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.launchgui.ConfigHandler;
 import tehnut.launchgui.utils.LogHelper;
 import tehnut.launchgui.utils.Utils;
 
 import java.net.URI;
 
+@SideOnly(Side.CLIENT)
 public class GuiUpdate extends GuiScreen {
 
     @Override
