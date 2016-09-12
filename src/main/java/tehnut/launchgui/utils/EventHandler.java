@@ -19,7 +19,7 @@ public class EventHandler {
     public void openMainMenu(GuiOpenEvent event) {
         if (shouldLoadGUI) {
             if (event.getGui() instanceof GuiMainMenu) {
-                if (Utils.hasUpdate()) {
+                if (Utils.hasUpdate() && !ConfigHandler.checkUpdateEarly) {
                     event.setGui(new GuiUpdate());
                     shouldLoadGUI = false;
                     return;

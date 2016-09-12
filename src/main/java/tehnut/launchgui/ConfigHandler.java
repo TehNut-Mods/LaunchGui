@@ -23,6 +23,7 @@ public class ConfigHandler {
 
     public static boolean enableUpdateChecker;
     public static boolean disableContinueButtonIfUpdate;
+    public static boolean checkUpdateEarly;
     public static String updateGuiLines;
     public static String updateCheckerUrl;
     public static String updateInformationButtonText;
@@ -79,6 +80,7 @@ public class ConfigHandler {
         config.addCustomCategoryComment(category + ".button", "Settings related to the shown buttons.");
         config.addCustomCategoryComment(category + ".internal", "Settings for the internal checking that the GUI does.");
         config.addCustomCategoryComment(category + ".information", "Information to provide to players.");
+        checkUpdateEarly = config.getBoolean("checkUpdateEarly", category, true, "Checks for a pack update during the Pre-Initialization phase instead of when the main menu displays.\nThis will open a new window that always displays on top. It will pause loading until closed.");
         enableUpdateChecker = config.getBoolean("enableUpdateChecker", category + ".internal", false, "Enables the update checker.");
         disableContinueButtonIfUpdate = config.getBoolean("disableContinueButtonIfUpdate", category + ".internal", false, "Disable the Continue button if there is a pack update available.");
         updateGuiLines = config.getString("updateGuiLines", category + ".information", "Click the information button below to find out more!", "Information to display to your players whenever a new update is available.\n" +
