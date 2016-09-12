@@ -33,10 +33,10 @@ public class UpdateWindow extends Application {
     }
 
     @Override
-    public void start(final Stage primaryStage) {
+    public void start(Stage primaryStage) {
         this.window = primaryStage;
 
-        primaryStage.setTitle(ConfigHandler.modpackName + " Update Checker");
+        primaryStage.setTitle(I18n.format("gui.launchgui.update.title", ConfigHandler.modpackName));
         primaryStage.setWidth(700);
         primaryStage.setHeight(500);
         primaryStage.setAlwaysOnTop(true);
@@ -50,7 +50,7 @@ public class UpdateWindow extends Application {
         titleBox.setSpacing(10);
         border.setTop(titleBox);
 
-        VBox bodyBox = new VBox(new VBox(getBodyText()), new Separator());
+        VBox bodyBox = new VBox(new VBox(getBodyText()));
         bodyBox.setPadding(new Insets(5, 5, 5, 5));
         bodyBox.setSpacing(10);
         border.setCenter(bodyBox);
@@ -58,7 +58,7 @@ public class UpdateWindow extends Application {
         HBox buttonBox = new HBox(getButtons());
         buttonBox.setPadding(new Insets(5, 5, 5, 5));
         buttonBox.setSpacing(10);
-        border.setBottom(buttonBox);
+        border.setBottom(new VBox(new Separator(), buttonBox));
 
         primaryStage.setScene(new Scene(border));
         primaryStage.show();
