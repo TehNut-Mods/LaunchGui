@@ -9,7 +9,7 @@ import tehnut.launchgui.utils.Utils;
 
 import java.io.File;
 
-@Mod(modid = LaunchGui.ID, name = LaunchGui.NAME, version = LaunchGui.VERSION, clientSideOnly = true, acceptedMinecraftVersions = "[1.9,1.13)")
+@Mod(modid = LaunchGui.ID, name = LaunchGui.NAME, version = LaunchGui.VERSION, clientSideOnly = true, acceptedMinecraftVersions = "[1.9,)")
 public class LaunchGui {
 
     public static final String NAME = "LaunchGui";
